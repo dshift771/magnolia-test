@@ -1,0 +1,562 @@
+/* ==========================================================================
+   Magnolia — arkusz stylów
+   Wszystkie kolory, odstępy i kroje pisma są zdefiniowane jako zmienne
+   w bloku :root poniżej. Zmiana marki = zmiana kilkunastu linii.
+   ========================================================================== */
+
+/* --- 1. Tokeny -------------------------------------------------------- */
+:root {
+  /* Kolory */
+  --paper:      #FAF6EF;  /* tło główne, ciepła biel */
+  --paper-2:    #F2EADC;  /* tło sekcji przeplatanych */
+  --sand:       #E2D5C0;  /* linie, obramowania */
+  --ink:        #241F1B;  /* tekst główny, czerń z logo */
+  --ink-soft:   #6E6153;  /* tekst drugorzędny */
+  --sun:        #F2CE45;  /* akcent — słońce z logo */
+  --sun-soft:   #FBEBA6;  /* poświata akcentu */
+  --leaf:       #7C8465;  /* akcent pomocniczy, stonowana oliwka */
+
+  /* Typografia */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Karla", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+
+  --step--1: clamp(0.84rem, 0.82rem + 0.12vw, 0.92rem);
+  --step-0:  clamp(1rem, 0.96rem + 0.2vw, 1.12rem);
+  --step-1:  clamp(1.2rem, 1.12rem + 0.4vw, 1.45rem);
+  --step-2:  clamp(1.5rem, 1.34rem + 0.8vw, 2rem);
+  --step-3:  clamp(1.9rem, 1.6rem + 1.5vw, 2.9rem);
+  --step-4:  clamp(2.4rem, 1.8rem + 2.9vw, 4.4rem);
+
+  /* Rytm */
+  --space-xs: 0.5rem;
+  --space-s:  1rem;
+  --space-m:  2rem;
+  --space-l:  4rem;
+  --space-xl: clamp(4rem, 9vw, 7.5rem);
+
+  --wrap: 1180px;
+  --wrap-narrow: 720px;
+  --radius: 4px;
+  --radius-organic: 48% 52% 42% 58% / 55% 45% 55% 45%;
+}
+
+/* --- 2. Reset i podstawy ---------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.65;
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg, iframe { max-width: 100%; display: block; }
+img { height: auto; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-s);
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--step-4); font-variation-settings: "opsz" 144; }
+h2 { font-size: var(--step-3); font-variation-settings: "opsz" 100; }
+h3 { font-size: var(--step-1); font-weight: 600; font-variation-settings: "opsz" 30; }
+
+p { margin: 0 0 var(--space-s); max-width: 62ch; text-wrap: pretty; }
+
+a { color: inherit; text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-color: var(--sun); }
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection { background: var(--sun-soft); color: var(--ink); }
+
+/* --- 3. Pomocnicze ----------------------------------------------------- */
+.wrap { width: min(100% - 2.5rem, var(--wrap)); margin-inline: auto; }
+.wrap-narrow { width: min(100% - 2.5rem, var(--wrap-narrow)); margin-inline: auto; }
+
+.section { padding-block: var(--space-xl); }
+.section--tint { background: var(--paper-2); }
+.section--edge { border-top: 1px solid var(--sand); }
+
+.eyebrow {
+  font-size: var(--step--1);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin: 0 0 var(--space-s);
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+.eyebrow::before {
+  content: "";
+  width: 1.6rem;
+  height: 2px;
+  background: var(--sun);
+  flex: none;
+}
+
+.lead { font-size: var(--step-1); color: var(--ink-soft); line-height: 1.5; }
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75rem 1.25rem;
+  z-index: 100;
+}
+.skip-link:focus { left: 1rem; top: 1rem; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+/* --- 4. Przyciski ------------------------------------------------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.85em 1.6em;
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.btn--solid { background: var(--ink); color: var(--paper); }
+.btn--solid:hover { background: var(--sun); color: var(--ink); border-color: var(--sun); }
+.btn--ghost { background: transparent; color: var(--ink); }
+.btn--ghost:hover { background: var(--ink); color: var(--paper); }
+.btn:active { transform: translateY(1px); }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: var(--space-s); }
+
+/* --- 5. Nagłówek strony ----------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--sand);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-s);
+  padding-block: 0.75rem;
+}
+
+.brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+.brand img { width: 46px; height: auto; }
+.brand span {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-variation-settings: "opsz" 60;
+  letter-spacing: -0.01em;
+}
+
+.nav { display: flex; align-items: center; gap: var(--space-m); }
+.nav__list { display: flex; gap: var(--space-m); list-style: none; margin: 0; padding: 0; }
+.nav__link {
+  text-decoration: none;
+  font-size: var(--step--1);
+  letter-spacing: 0.04em;
+  padding-block: 0.4rem;
+  border-bottom: 2px solid transparent;
+}
+.nav__link:hover { border-bottom-color: var(--sand); }
+.nav__link[aria-current="page"] { border-bottom-color: var(--sun); font-weight: 700; }
+
+.nav-toggle { display: none; background: none; border: 0; padding: 0.5rem; cursor: pointer; }
+.nav-toggle svg { width: 26px; height: 26px; stroke: var(--ink); }
+
+@media (max-width: 860px) {
+  .nav-toggle { display: block; }
+  .nav {
+    position: fixed;
+    inset: 64px 0 auto;
+    background: var(--paper);
+    border-bottom: 1px solid var(--sand);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--space-s) 1.25rem var(--space-m);
+    display: none;
+  }
+  .nav[data-open="true"] { display: flex; }
+  .nav__list { flex-direction: column; gap: 0; }
+  .nav__link { display: block; padding: 0.9rem 0; border-bottom: 1px solid var(--sand); font-size: var(--step-0); }
+  .nav .btn { margin-top: var(--space-s); justify-content: center; }
+}
+
+/* --- 6. Hero ----------------------------------------------------------- */
+.hero { padding-block: clamp(3rem, 7vw, 6rem) var(--space-xl); }
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.hero__title { margin-bottom: var(--space-m); }
+.hero__title em {
+  font-style: normal;
+  display: block;
+  color: var(--ink-soft);
+}
+
+.hero__meta {
+  margin-top: var(--space-l);
+  padding-top: var(--space-s);
+  border-top: 1px solid var(--sand);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+.hero__meta dt { font-weight: 700; color: var(--ink); letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.75rem; }
+.hero__meta dd { margin: 0.15rem 0 0; }
+
+/* Wizualizacja hero + element sygnaturowy: oddychające słońce */
+.hero__visual { position: relative; }
+.hero__photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-organic);
+  background: var(--paper-2);
+}
+
+.breath {
+  position: absolute;
+  left: -6%;
+  bottom: 8%;
+  width: clamp(96px, 17vw, 168px);
+  aspect-ratio: 1;
+  pointer-events: none;
+}
+.breath__glow, .breath__core {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  transform-origin: center;
+}
+.breath__glow { background: var(--sun-soft); animation: breathe 11s ease-in-out infinite; }
+.breath__core { inset: 22%; background: var(--sun); animation: breathe 11s ease-in-out infinite 0.35s; }
+
+@keyframes breathe {
+  0%, 100% { transform: scale(0.82); opacity: 0.82; }
+  45%      { transform: scale(1.06); opacity: 1; }
+  62%      { transform: scale(1.02); opacity: 0.96; }
+}
+
+@media (max-width: 860px) {
+  .hero__grid { grid-template-columns: 1fr; }
+  .hero__visual { order: -1; }
+  .hero__photo { aspect-ratio: 3 / 2; }
+  .breath { left: auto; right: 4%; bottom: -8%; }
+}
+
+/* --- 7. Siatki treści -------------------------------------------------- */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: var(--space-m);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.section__head { max-width: 46rem; margin-bottom: var(--space-l); }
+
+/* Karta usługi */
+.card {
+  background: var(--paper);
+  border: 1px solid var(--sand);
+  border-radius: var(--radius);
+  padding: var(--space-m) calc(var(--space-m) - 0.4rem);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.card:hover { border-color: var(--ink); transform: translateY(-3px); }
+.card h3 { margin-bottom: 0.4rem; }
+.card p { font-size: var(--step--1); color: var(--ink-soft); }
+/* tylko akapit opisu rozpycha kartę — nie etykieta nad tytułem */
+.card p:not(.card__tag) { flex: 1 1 auto; }
+.card__tag {
+  flex: 0 0 auto;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--leaf);
+  margin-bottom: var(--space-s);
+}
+.card__link {
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid var(--sun);
+  align-self: flex-start;
+  padding-bottom: 2px;
+}
+
+/* --- 8. Cennik (menu zabiegów) ---------------------------------------- */
+.menu-group { margin-bottom: var(--space-l); }
+.menu-group > h3 {
+  padding-bottom: var(--space-xs);
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: var(--space-s);
+}
+
+.menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 0.35rem 0.75rem;
+  padding-block: 0.95rem;
+  border-bottom: 1px solid var(--sand);
+}
+.menu-item__name { font-weight: 700; }
+.menu-item__price { font-family: var(--font-display); font-size: var(--step-1); font-variation-settings: "opsz" 40; white-space: nowrap; }
+.menu-item__desc {
+  grid-column: 1 / -1;
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 58ch;
+}
+.menu-item__time {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  font-weight: 400;
+  margin-left: 0.5em;
+}
+
+/* --- 9. FAQ (bez JS) --------------------------------------------------- */
+.faq { border-top: 1px solid var(--sand); }
+.faq__item { border-bottom: 1px solid var(--sand); }
+.faq__q {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-variation-settings: "opsz" 40;
+  padding: 1.15rem 2.5rem 1.15rem 0;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+}
+.faq__q::-webkit-details-marker { display: none; }
+.faq__q::after {
+  content: "";
+  position: absolute;
+  right: 0.35rem;
+  top: 1.7rem;
+  width: 12px; height: 12px;
+  border-right: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  transform: rotate(45deg);
+  transition: transform 0.25s ease;
+}
+.faq__item[open] .faq__q::after { transform: rotate(-135deg); }
+.faq__item[open] .faq__q { color: var(--ink); }
+.faq__a { padding: 0 2.5rem 1.4rem 0; color: var(--ink-soft); }
+.faq__a p:last-child { margin-bottom: 0; }
+
+/* --- 10. Kroki / lista numerowana ------------------------------------- */
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+.steps li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-s);
+  padding-block: var(--space-s);
+  border-bottom: 1px solid var(--sand);
+}
+.steps li::before {
+  content: counter(step, decimal-leading-zero);
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  color: var(--sun);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.steps h3 { font-size: var(--step-0); margin-bottom: 0.2rem; }
+.steps p { margin: 0; font-size: var(--step--1); color: var(--ink-soft); }
+
+/* --- 11. Cytat / wyróżnienie ------------------------------------------ */
+.pullquote {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-variation-settings: "opsz" 100;
+  line-height: 1.28;
+  max-width: 26ch;
+  margin: 0;
+  border-left: 3px solid var(--sun);
+  padding-left: var(--space-m);
+}
+.pullquote cite { display: block; font-family: var(--font-body); font-size: var(--step--1); font-style: normal; color: var(--ink-soft); margin-top: var(--space-s); letter-spacing: 0.04em; }
+
+.figure-organic {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-organic);
+  background: var(--paper-2);
+}
+
+/* --- 12. Kontakt / rezerwacja ----------------------------------------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--space-m);
+}
+
+.contact-block h3 { font-size: var(--step-0); text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--font-body); font-weight: 700; color: var(--ink-soft); }
+.contact-block p { font-size: var(--step-1); }
+.contact-block a { text-decoration-color: var(--sun); }
+
+/* Osadzony widget rezerwacji — miejsce na kod zewnętrzny */
+.booking {
+  border: 1px dashed var(--sand);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  text-align: center;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-s);
+}
+.booking__note { font-size: var(--step--1); color: var(--ink-soft); max-width: 44ch; margin: 0; }
+
+/* Mapa — fasada ładowana na kliknięcie (szybkość + prywatność) */
+.map { position: relative; border: 1px solid var(--sand); border-radius: var(--radius); overflow: hidden; }
+.map__facade {
+  width: 100%;
+  min-height: 380px;
+  border: 0;
+  background:
+    repeating-linear-gradient(45deg, var(--paper-2) 0 14px, var(--paper) 14px 28px);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  color: var(--ink);
+  padding: var(--space-m);
+}
+.map__facade strong { font-size: var(--step-1); font-family: var(--font-display); font-weight: 500; }
+.map__facade span { font-size: var(--step--1); color: var(--ink-soft); }
+.map iframe { width: 100%; min-height: 380px; border: 0; display: block; }
+
+/* --- 13. Pasek CTA ----------------------------------------------------- */
+.cta-band {
+  background: var(--ink);
+  color: var(--paper);
+  padding-block: var(--space-xl);
+  text-align: center;
+}
+.cta-band h2 { color: var(--paper); }
+.cta-band p { color: color-mix(in srgb, var(--paper) 72%, transparent); margin-inline: auto; }
+.cta-band .btn { border-color: var(--sun); background: var(--sun); color: var(--ink); }
+.cta-band .btn:hover { background: transparent; color: var(--sun); }
+.cta-band .btn-row { justify-content: center; margin-top: var(--space-m); }
+
+/* --- 14. Stopka -------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--sand);
+  padding-block: var(--space-l) var(--space-m);
+  font-size: var(--step--1);
+}
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: var(--space-m);
+  margin-bottom: var(--space-l);
+}
+.site-footer h2 {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: var(--space-s);
+}
+.site-footer ul { list-style: none; margin: 0; padding: 0; }
+.site-footer li { margin-bottom: 0.45rem; }
+.site-footer a { text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; text-decoration-color: var(--sun); }
+.site-footer__bottom {
+  border-top: 1px solid var(--sand);
+  padding-top: var(--space-s);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  justify-content: space-between;
+  color: var(--ink-soft);
+}
+
+/* --- 15. Nagłówek podstrony ------------------------------------------- */
+.page-head { padding-block: clamp(2.5rem, 6vw, 4.5rem) var(--space-l); }
+.page-head p { font-size: var(--step-1); color: var(--ink-soft); }
+
+.breadcrumbs { font-size: var(--step--1); color: var(--ink-soft); margin-bottom: var(--space-m); }
+.breadcrumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; padding: 0; }
+.breadcrumbs li + li::before { content: "/"; margin-right: 0.5rem; color: var(--sand); }
+.breadcrumbs a { text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+
+/* --- 16. Dostępność: ograniczony ruch --------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .breath__glow, .breath__core { transform: scale(1); opacity: 1; }
+}
+
+/* --- 17. Druk ---------------------------------------------------------- */
+@media print {
+  .site-header, .cta-band, .booking, .map, .breath { display: none; }
+  body { background: #fff; }
+}

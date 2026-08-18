@@ -1,0 +1,23 @@
+# Magnolia — reguły indeksacji
+# Po podpięciu własnej domeny zmień adres mapy strony na dole pliku.
+
+User-agent: *
+Allow: /
+
+# Nie indeksujemy zasobów technicznych
+Disallow: /assets/js/
+Disallow: /404.html
+
+# Roboty AI — usuń komentarz przy blokadach, jeśli nie chcesz być
+# wykorzystywany do trenowania modeli. Domyślnie zezwalamy, bo dla
+# małej, nowej firmy widoczność w asystentach AI to darmowy ruch.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://yyytrujhgfjhfj.pl/sitemap.xml

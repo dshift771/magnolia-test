@@ -1,0 +1,29 @@
+# Magnolia
+
+> Kameralny gabinet masażu w Warszawie. Masaż leczniczy, relaksacyjny, sportowy
+> i tkanek głębokich. Jedna wizyta naraz, bez poczekalni. Otwarcie: wrzesień 2026.
+
+Magnolia to jednoosobowy gabinet masażu przy ul. Przykładowej 12/3 w Warszawie.
+Przyjmujemy jedną osobę w danym momencie. Zabiegi trwają 30, 60 lub 90 minut.
+Rezerwacja online lub telefonicznie pod +48 000 000 000.
+Płatność: gotówka, karta, BLIK. Bezpłatne odwołanie do 12 godzin przed wizytą.
+
+## Podstrony
+
+- [Start](https://yyytrujhgfjhfj.pl/): Przegląd usług, przebieg pierwszej wizyty, dane kontaktowe.
+- [Oferta i cennik](https://yyytrujhgfjhfj.pl/oferta/): Opisy czterech rodzajów masażu, ceny zabiegów pojedynczych (110–250 zł), karnety i dodatki.
+- [O gabinecie i FAQ](https://yyytrujhgfjhfj.pl/gabinet/): Opis wnętrza, informacje o terapeucie, odpowiedzi na pytania o przebieg wizyty, ubiór, przeciwwskazania i płatności.
+- [Kontakt i rezerwacja](https://yyytrujhgfjhfj.pl/kontakt/): Telefon, e-mail, adres, godziny otwarcia, kalendarz rezerwacji, dojazd.
+
+## Zakres usług
+
+- Masaż leczniczy — praca nad konkretną dolegliwością (kark, odcinek lędźwiowy, bark).
+- Masaż relaksacyjny — całe ciało, ciepły olej, wolne tempo.
+- Masaż sportowy — warianty przedstartowy i powysiłkowy.
+- Masaż tkanek głębokich — przewlekłe napięcia, praca na powięzi.
+- Dodatki: bańka chińska, ciepłe kamienie, vouchery podarunkowe.
+
+## Uwagi
+
+Wszystkie treści na stronie są obecnie przykładowe i zostaną zastąpione
+informacjami od właściciela przed uruchomieniem serwisu.

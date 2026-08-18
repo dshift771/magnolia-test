@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" width="1000" height="1250" role="img" aria-label="zdjęcie gabinetu">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F2EADC"/>
+      <stop offset="100%" stop-color="#E2D5C0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="1250" fill="url(#g1)"/>
+  <g fill="none" stroke="#241F1B" stroke-opacity="0.10" stroke-width="4">
+    <circle cx="280" cy="425" r="300"/>
+    <circle cx="720" cy="850" r="380"/>
+    <path d="M0 975 Q 300 750 550 950 T 1000 875"/>
+  </g>
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"
+        font-family="Georgia, serif" font-size="62"
+        fill="#241F1B" fill-opacity="0.42" letter-spacing="2">zdjęcie gabinetu</text>
+</svg>
